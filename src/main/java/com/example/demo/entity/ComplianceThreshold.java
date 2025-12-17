@@ -59,4 +59,5 @@ public class ComplianceThreshold {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+    public ComplianceLog
 }
