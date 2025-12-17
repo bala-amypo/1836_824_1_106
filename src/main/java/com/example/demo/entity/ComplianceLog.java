@@ -66,5 +66,7 @@ public class ComplianceLog {
     public void setLoggedAt(LocalDateTime loggedAt) {
         this.loggedAt = loggedAt;
     }
-    
+    public ComplianceLog(Long id, SensorReading sensorReading, ComplianceThreshold thresholdUsed, String statusAssigned, String remarks, LocalDateTime loggedAt)
+    this.id=id;
+    this.
 }
