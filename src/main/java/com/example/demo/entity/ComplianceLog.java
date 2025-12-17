@@ -66,4 +66,5 @@ public class ComplianceLog {
     public void setLoggedAt(LocalDateTime loggedAt) {
         this.loggedAt = loggedAt;
     }
+    
 }
