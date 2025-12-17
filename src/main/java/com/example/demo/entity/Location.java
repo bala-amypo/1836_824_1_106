@@ -28,8 +28,14 @@ public class Location{
     public String getRegion(){
         return region;
     }
-    public void SetRegion(String ){
+    public void setRegion(String region){
         this.region=region;
+    }
+    public String getCreatedAt(){
+        return createdAt;
+    }
+    public void setCreatedAt(String createdAt){
+        this.createdAt=createdAt;
     }
 
     
