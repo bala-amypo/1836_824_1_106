@@ -21,7 +21,16 @@ public class Location{
     }
     public String getDescription(){
         return description;
-        
     }
+    public void setDescription(String description){
+        this.description=description;
+    }
+    public String getRegion(){
+        return region;
+    }
+    public void SetRegion(String ){
+        this.region=region;
+    }
+
     
 }
