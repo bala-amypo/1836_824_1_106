@@ -66,13 +66,14 @@ public class ComplianceLog {
     public void setLoggedAt(LocalDateTime loggedAt) {
         this.loggedAt = loggedAt;
     }
-    public ComplianceLog(Long id, SensorReading sensorReading, ComplianceThreshold thresholdUsed, String statusAssigned, String remarks, LocalDateTime loggedAt)
+    public ComplianceLog(Long id, SensorReading sensorReading, ComplianceThreshold thresholdUsed, String statusAssigned, String remarks, LocalDateTime loggedAt){
     this.id=id;
     this.sensorReading=sensorReading;
     this.thresholdUsed=thresholdUsed;
     this.statusAssigned=statusAssigned;
     this.remarks=remarks;
     this.loggedAt=loggedAt;
+}
 }
 public ComplianceLog(){
     

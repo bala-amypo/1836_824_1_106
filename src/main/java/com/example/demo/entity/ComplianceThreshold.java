@@ -58,7 +58,7 @@ public class ComplianceThreshold {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-    public ComplianceThreshold(Long id, String sensorType, Double minValue, Double maxValue, String severityLevel, LocalDateTime createdAt)
+    public ComplianceThreshold(Long id, String sensorType, Double minValue, Double maxValue, String severityLevel, LocalDateTime createdAt){
     this.id=id;
     this.sensorType=sensorType;
     this.minValue=minValue;
@@ -67,6 +67,7 @@ public class ComplianceThreshold {
     this.createdAt=createdAt;
 
 }
+}
 public ComplianceThreshold(){
-    
+
 }

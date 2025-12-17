@@ -41,12 +41,13 @@ public class Location{
     public void setCreatedAt(String createdAt){
         this.createdAt=createdAt;
     }
-    public Location(Long id, String locationName, String description, String region, String createdAt)
+    public Location(Long id, String locationName, String description, String region, String createdAt){
     this.id=id;
     this.locationName=locationName;
     this.description=description;
     this.region=region;
     this.createdAt=createdAt;
+}
 }
 public Location(){
     
