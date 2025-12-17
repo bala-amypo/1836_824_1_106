@@ -1,8 +1,10 @@
 package com.example.demo.model;
-
+import jakarta.persisitence.Entity;
+import jakarta.persisitence.Id;
 import java.time.LocalDateTime;
-
+@Entity
 public class SensorReading {
+    @Id
 
     private Long id;
     private Sensor sensor;

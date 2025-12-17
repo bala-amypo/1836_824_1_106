@@ -1,9 +1,10 @@
 package com.example.demo.model;
-
+import jakarta.persisitence.Entity;
+import jakarta.persisitence.Id;
 import java.time.LocalDateTime;
-
+@Entity
 public class ComplianceThreshold {
-
+    @Id
     private Long id;
     private String sensorType;
     private Double minValue;

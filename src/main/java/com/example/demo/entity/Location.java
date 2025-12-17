@@ -1,5 +1,9 @@
 package.com.example.demo.model;
+import jakarta.persisitence.Entity;
+import jakarta.persisitence.Id;
+@Entity
 public class Location{
+    @Id
     private Long id;
     private String locationName;
     private String description;

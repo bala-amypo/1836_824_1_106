@@ -1,5 +1,9 @@
 package.com.example.demo.model;
+import jakarta.persisitence.Entity;
+import jakarta.persisitence.Id;
+@Entity
 public class Sensor{
+    @Id
     private Long id;
     private String sensorCode;
     private String sensorType;
