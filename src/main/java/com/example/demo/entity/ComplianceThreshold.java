@@ -62,5 +62,11 @@ public class ComplianceThreshold {
     public ComplianceThreshold(Long id, String sensorType, Double minValue, Double maxValue, String severityLevel, LocalDateTime createdAt)
     this.id=id;
     this.sensorType=sensorType;
-    this.
+    this.minValue=minValue;
+    this.maxValue=maxValue;
+    this.severityLevel=severityLevel;
+    this.createdAt=createdAt;
+}
+public ComplianceThreshold(){
+    
 }

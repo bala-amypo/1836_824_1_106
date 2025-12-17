@@ -51,4 +51,10 @@ public class SensorReading {
     public void setStatus(String status) {
         this.status = status;
     }
+    public SensorReading(Long id, Sensor sensor, Double readingValue, LocalDateTime readingTime, String status)
+    this.id=id;
+    this.sensor=sensor;
+    this.readingValue=readingValue;
+    this.readingTime=readingTime;
+    this.status=status;
 }
