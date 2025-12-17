@@ -64,5 +64,9 @@ public class ComplianceThreshold {
     this.minValue=minValue;
     this.maxValue=maxValue;
     this.severityLevel=severityLevel;
-    this.cr
+    this.createdAt=createdAt;
+
+}
+public ComplianceThreshold(){
+    
 }
