@@ -57,4 +57,8 @@ public class SensorReading {
     this.readingValue=readingValue;
     this.readingTime=readingTime;
     this.status=status;
+
+}
+public SensorReading(){
+    
 }
