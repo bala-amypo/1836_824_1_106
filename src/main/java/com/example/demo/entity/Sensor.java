@@ -63,10 +63,16 @@ public class Sensor{
     public void setIsActive(Boolean isActive) {
         this.isActive = isActive;
     }
-    public sensor(Long id, String sensorCode, String sensorType, String Location, LocalDateTime installedAt, Boolean isActive)
+    public sensor(Long id, String sensorCode, String sensorType, String location, LocalDateTime installedAt, Boolean isActive)
     this.id=id;
     this.sensorCode=sensorCode;
     this.sensorType=sensorType;
     this.location=location;
-    this.inst
+    this.installedAt=installedAt;
+    this.isActive=isActive;
 }
+public sensot(){
+
+}
+
+
