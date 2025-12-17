@@ -1,8 +1,10 @@
 package com.example.demo.entity;
-
+import.jakarta.persisitence.Entity;
+import.jakarta.persisitence.Id;
 import java.time.LocalDateTime;
-
+@Entity
 public class ComplianceLog {
+    @Id
 
     private Long id;
     private SensorReading sensorReading;
