@@ -1,16 +1,35 @@
-package com.example.demo.model;
+package com.example.demo.entity;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import java.time.LocalDateTime;
+
 @Entity
 public class SensorReading {
-    @Id
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Sensor sensor;
-    private Double readingValue;
-    private LocalDateTime readingTime;
-    private String status;
+
+    private String sensorType;
+    private Double value;
+    private LocalDateTime timestamp;
+
+    public SensorReading() {
+    }
+
+    
+    public SensorReading(Long id, String sensorType, Double value, LocalDateTime timestamp) {
+        this.id = id;
+        this.sensorType = sensorType;
+        this.value = value;
+        this.timestamp = timestamp;
+    }
+
+   
 
     public Long getId() {
         return id;
@@ -20,47 +39,27 @@ public class SensorReading {
         this.id = id;
     }
 
-    public Sensor getSensor() {
-        return sensor;
+    public String getSensorType() {
+        return sensorType;
     }
 
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
+    public void setSensorType(String sensorType) {
+        this.sensorType = sensorType;
     }
 
-    public Double getReadingValue() {
-        return readingValue;
+    public Double getValue() {
+        return value;
     }
 
-    public void setReadingValue(Double readingValue) {
-        this.readingValue = readingValue;
+    public void setValue(Double value) {
+        this.value = value;
     }
 
-    public LocalDateTime getReadingTime() {
-        return readingTime;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 
-    public void setReadingTime(LocalDateTime readingTime) {
-        this.readingTime = readingTime;
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-    public SensorReading(Long id, Sensor sensor, Double readingValue, LocalDateTime readingTime, String status){
-    this.id=id;
-    this.sensor=sensor;
-    this.readingValue=readingValue;
-    this.readingTime=readingTime;
-    this.status=status;
-
-}
-
-public SensorReading(){
-    
-}
 }

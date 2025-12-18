@@ -8,7 +8,7 @@ import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 
 @Entity
-public class ComplianceThreshold {
+public class ComplianceThreshold{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,9 @@ public class ComplianceThreshold {
     private String severityLevel;
     private LocalDateTime createdAt;
 
-    public ComplianceThreshold() {}
+    public ComplianceThreshold() {
+
+    }
 
     public ComplianceThreshold(Long id, String sensorType, Double minValue,
                                Double maxValue, String severityLevel,
@@ -32,10 +34,7 @@ public class ComplianceThreshold {
         this.severityLevel = severityLevel;
         this.createdAt = createdAt;
     }
-    public ComplianceThreshold(){
-
-}
-    
+   
 }
 
 
