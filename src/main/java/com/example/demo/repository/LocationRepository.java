@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.entity.Location;
 
 @Repository
-public interface SensorRepository extends JpaRepository<Location, Long> {
+public interface LocationRepository extends JpaRepository<Location, Long> {
 }
