@@ -1,40 +1,42 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-public class Compliancelog {
+public class ComplianceLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String sensorType;
-    private Double minValue;
-    private Double maxValue;
-    private String severityLevel;
-    private LocalDateTime createdAt;
+    
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "sensor_reading_id")
+    private SensorReading sensorReading;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "threshold_id")
+    private ComplianceThreshold thresholdUsed;
+
+    private String statusAssigned;
+    private String remarks;
+    private LocalDateTime loggedAt;
 
    
-    public ComplianceLog() {
-    }
+    public ComplianceLog() { }
 
-    
-    public ComplianceLog(Long id, String sensorType, Double minValue,Double maxValue, String severityLevel,LocalDateTime createdAt) {
+ 
+    public ComplianceLog(Long id,SensorReading sensorReading,ComplianceThreshold thresholdUsed,String statusAssigned,String remarks,LocalDateTime loggedAt) {
         this.id = id;
-        this.sensorType = sensorType;
-        this.minValue = minValue;
-        this.maxValue = maxValue;
-        this.severityLevel = severityLevel;
-        this.createdAt = createdAt;
+        this.sensorReading = sensorReading;
+        this.thresholdUsed = thresholdUsed;
+        this.statusAssigned = statusAssigned;
+        this.remarks = remarks;
+        this.loggedAt = loggedAt;
     }
 
-
+   
     public Long getId() {
         return id;
     }
@@ -43,47 +45,43 @@ public class Compliancelog {
         this.id = id;
     }
 
-    public String getSensorType() {
-        return sensorType;
+    public SensorReading getSensorReading() {
+        return sensorReading;
     }
 
-    public void setSensorType(String sensorType) {
-        this.sensorType = sensorType;
+    public void setSensorReading(SensorReading sensorReading) {
+        this.sensorReading = sensorReading;
     }
 
-    public Double getMinValue() {
-        return minValue;
+    public ComplianceThreshold getThresholdUsed() {
+        return thresholdUsed;
     }
 
-    public void setMinValue(Double minValue) {
-        this.minValue = minValue;
+    public void setThresholdUsed(ComplianceThreshold thresholdUsed) {
+        this.thresholdUsed = thresholdUsed;
     }
 
-    public Double getMaxValue() {
-        return maxValue;
+    public String getStatusAssigned() {
+        return statusAssigned;
     }
 
-    public void setMaxValue(Double maxValue) {
-        this.maxValue = maxValue;
+    public void setStatusAssigned(String statusAssigned) {
+        this.statusAssigned = statusAssigned;
     }
 
-    public String getSeverityLevel() {
-        return severityLevel;
+    public String getRemarks() {
+        return remarks;
     }
 
-    public void setSeverityLevel(String severityLevel) {
-        this.severityLevel = severityLevel;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getLoggedAt() {
+        return loggedAt;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setLoggedAt(LocalDateTime loggedAt) {
+        this.loggedAt = loggedAt;
     }
 }
-  
-
-
-
