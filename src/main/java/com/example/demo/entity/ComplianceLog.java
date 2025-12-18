@@ -1,90 +1,90 @@
-// package com.example.demo.entity;
+package com.example.demo.entity;
 
-// import jakarta.persistence.Entity;
-// import jakarta.persistence.GeneratedValue;
-// import jakarta.persistence.GenerationType;
-// import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-// import java.time.LocalDateTime;
+import java.time.LocalDateTime;
 
-// @Entity
-// public class Compliancelog {
+@Entity
+public class Compliancelog {
 
-//     @Id
-//     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//     private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-//     private String sensorType;
-//     private Double minValue;
-//     private Double maxValue;
-//     private String severityLevel;
-//     private LocalDateTime createdAt;
+    private String sensorType;
+    private Double minValue;
+    private Double maxValue;
+    private String severityLevel;
+    private LocalDateTime createdAt;
 
    
-//     public ComplianceThreshold() {
-//     }
+    public ComplianceThreshold() {
+    }
 
     
-//     public ComplianceThreshold(Long id, String sensorType, Double minValue,
-//                                Double maxValue, String severityLevel,
-//                                LocalDateTime createdAt) {
-//         this.id = id;
-//         this.sensorType = sensorType;
-//         this.minValue = minValue;
-//         this.maxValue = maxValue;
-//         this.severityLevel = severityLevel;
-//         this.createdAt = createdAt;
-//     }
+    public ComplianceThreshold(Long id, String sensorType, Double minValue,
+                               Double maxValue, String severityLevel,
+                               LocalDateTime createdAt) {
+        this.id = id;
+        this.sensorType = sensorType;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+        this.severityLevel = severityLevel;
+        this.createdAt = createdAt;
+    }
 
 
-//     public Long getId() {
-//         return id;
-//     }
+    public Long getId() {
+        return id;
+    }
 
-//     public void setId(Long id) {
-//         this.id = id;
-//     }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-//     public String getSensorType() {
-//         return sensorType;
-//     }
+    public String getSensorType() {
+        return sensorType;
+    }
 
-//     public void setSensorType(String sensorType) {
-//         this.sensorType = sensorType;
-//     }
+    public void setSensorType(String sensorType) {
+        this.sensorType = sensorType;
+    }
 
-//     public Double getMinValue() {
-//         return minValue;
-//     }
+    public Double getMinValue() {
+        return minValue;
+    }
 
-//     public void setMinValue(Double minValue) {
-//         this.minValue = minValue;
-//     }
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
+    }
 
-//     public Double getMaxValue() {
-//         return maxValue;
-//     }
+    public Double getMaxValue() {
+        return maxValue;
+    }
 
-//     public void setMaxValue(Double maxValue) {
-//         this.maxValue = maxValue;
-//     }
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
+    }
 
-//     public String getSeverityLevel() {
-//         return severityLevel;
-//     }
+    public String getSeverityLevel() {
+        return severityLevel;
+    }
 
-//     public void setSeverityLevel(String severityLevel) {
-//         this.severityLevel = severityLevel;
-//     }
+    public void setSeverityLevel(String severityLevel) {
+        this.severityLevel = severityLevel;
+    }
 
-//     public LocalDateTime getCreatedAt() {
-//         return createdAt;
-//     }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-//     public void setCreatedAt(LocalDateTime createdAt) {
-//         this.createdAt = createdAt;
-//     }
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
   
 
-// }
+}
 
