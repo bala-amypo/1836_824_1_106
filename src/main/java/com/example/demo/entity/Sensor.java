@@ -1,6 +1,6 @@
 // package.com.example.demo.model;
-// import jakarta.persisitence.Entity;
-// import jakarta.persisitence.Id;
+// import jakarta.persistence.Entity;
+// import jakarta.persistence.Id;
 // @Entity
 // public class Sensor{
 //     @Id

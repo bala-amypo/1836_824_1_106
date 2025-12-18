@@ -3,7 +3,7 @@ package com.example.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
-import java.time.SensorReading
+
 
 @Entity
 public class ComplianceLog {
