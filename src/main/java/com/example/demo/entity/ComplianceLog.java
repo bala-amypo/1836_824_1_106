@@ -1,11 +1,12 @@
 package com.example.demo.entity;
-import jakarta.persisitence.Entity;
-import jakarta.persisitence.Id;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import java.time.LocalDateTime;
+
 @Entity
 public class ComplianceLog {
     @Id
-
     private Long id;
     private SensorReading sensorReading;
     private ComplianceThreshold thresholdUsed;
@@ -73,8 +74,9 @@ public class ComplianceLog {
     this.statusAssigned=statusAssigned;
     this.remarks=remarks;
     this.loggedAt=loggedAt;
-}
+
 }
 public ComplianceLog(){
     
+}
 }
