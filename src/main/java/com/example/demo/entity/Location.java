@@ -1,9 +1,14 @@
-package.com.example.demo.model;
+package.com.example.demo.entity;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 @Entity
 public class Location{
     @Id
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String locationName;
     private String description;
@@ -48,7 +53,8 @@ public class Location{
     this.region=region;
     this.createdAt=createdAt;
 }
-}
+
 public Location(){
     
+}
 }
