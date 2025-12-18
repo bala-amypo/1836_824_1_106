@@ -32,11 +32,11 @@ public class ComplianceThreshold {
         this.severityLevel = severityLevel;
         this.createdAt = createdAt;
     }
+    public ComplianceThreshold(){
 
+}
     
 }
 
-public ComplianceThreshold(){
 
-}
-}
+

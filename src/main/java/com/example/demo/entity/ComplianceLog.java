@@ -1,22 +1,42 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
 import java.time.LocalDateTime;
 
-
-
 @Entity
-public class ComplianceLog {
+public class ComplianceThreshold {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private SensorReading sensorReading;
-    private ComplianceThreshold thresholdUsed;
-    private String statusAssigned;
-    private String remarks;
-    private LocalDateTime loggedAt;
+
+    private String sensorType;
+    private Double minValue;
+    private Double maxValue;
+    private String severityLevel;
+    private LocalDateTime createdAt;
 
    
+    public ComplianceThreshold() {
+    }
+
+    
+    public ComplianceThreshold(Long id, String sensorType, Double minValue,
+                               Double maxValue, String severityLevel,
+                               LocalDateTime createdAt) {
+        this.id = id;
+        this.sensorType = sensorType;
+        this.minValue = minValue;
+        this.maxValue = maxValue;
+        this.severityLevel = severityLevel;
+        this.createdAt = createdAt;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -25,60 +45,46 @@ public class ComplianceLog {
         this.id = id;
     }
 
-    
-    public SensorReading getSensorReading() {
-        return sensorReading;
+    public String getSensorType() {
+        return sensorType;
     }
 
-    public void setSensorReading(SensorReading sensorReading) {
-        this.sensorReading = sensorReading;
+    public void setSensorType(String sensorType) {
+        this.sensorType = sensorType;
     }
 
-
-    public ComplianceThreshold getThresholdUsed() {
-        return thresholdUsed;
+    public Double getMinValue() {
+        return minValue;
     }
 
-    public void setThresholdUsed(ComplianceThreshold thresholdUsed) {
-        this.thresholdUsed = thresholdUsed;
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
     }
 
-
-    public String getStatusAssigned() {
-        return statusAssigned;
+    public Double getMaxValue() {
+        return maxValue;
     }
 
-    public void setStatusAssigned(String statusAssigned) {
-        this.statusAssigned = statusAssigned;
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
     }
 
-
-    public String getRemarks() {
-        return remarks;
+    public String getSeverityLevel() {
+        return severityLevel;
     }
 
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setSeverityLevel(String severityLevel) {
+        this.severityLevel = severityLevel;
     }
 
-    
-    public LocalDateTime getLoggedAt() {
-        return loggedAt;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 
-    public void setLoggedAt(LocalDateTime loggedAt) {
-        this.loggedAt = loggedAt;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
-    public ComplianceLog(Long id, SensorReading sensorReading, ComplianceThreshold thresholdUsed, String statusAssigned, String remarks, LocalDateTime loggedAt){
-    this.id=id;
-    this.sensorReading=sensorReading;
-    this.thresholdUsed=thresholdUsed;
-    this.statusAssigned=statusAssigned;
-    this.remarks=remarks;
-    this.loggedAt=loggedAt;
+  
 
 }
-public ComplianceLog(){
-    
-}
-}
+
