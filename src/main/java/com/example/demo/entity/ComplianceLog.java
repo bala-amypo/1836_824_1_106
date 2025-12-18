@@ -21,13 +21,11 @@ public class Compliancelog {
     private LocalDateTime createdAt;
 
    
-    public ComplianceThreshold() {
+    public ComplianceLog() {
     }
 
     
-    public ComplianceThreshold(Long id, String sensorType, Double minValue,
-                               Double maxValue, String severityLevel,
-                               LocalDateTime createdAt) {
+    public ComplianceLog(Long id, String sensorType, Double minValue,Double maxValue, String severityLevel,LocalDateTime createdAt) {
         this.id = id;
         this.sensorType = sensorType;
         this.minValue = minValue;
