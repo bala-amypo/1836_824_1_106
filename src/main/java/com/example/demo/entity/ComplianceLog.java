@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 
+
 @Entity
 public class ComplianceLog {
     @Id
