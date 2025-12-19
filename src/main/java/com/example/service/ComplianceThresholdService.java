@@ -3,5 +3,9 @@ import jakarta.persistence.service;
 import com.example.demo.entity.ComplianceThreshold;
 @Service
 public interface ComplianceThresholdService{
-    public ComplianceThreshold
+    public ComplianceThreshold createThreshold(ComplianceThreshold threshold);
+    public ComplianceThreshold getThreshold(Long id);
+    public ComplianceThreshold getThresholdBySensorType(String sensor Type);
+    public ComplianceThreshold getAllThreshold();
+    
 }
