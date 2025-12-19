@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
-public class AssignmentEvaluationServiceImpl implements AssignmentEvaluationService{
+public class LocationServiceImpl implements LocationService{
 
 @Autowired
-AssignmentEvaluationRepository aer;
-public AssignmentEvaluation createAssignmentEvaluation(AssignmentEvaluation ae){
+LocationRepository aer;
+public Location createLocation(Location l){
 
-    return aer.save(ae);
+    return l.save(l);
 }
 
 
