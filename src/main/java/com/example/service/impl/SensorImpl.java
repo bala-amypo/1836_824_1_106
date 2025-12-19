@@ -1,13 +1,13 @@
 package com.example.demo.service.impl;
-import com.example.demo.repository.AssignmentEvaluationRepository;
-import com.example.demo.entity.AssignmentEvaluation;
-import com.example.demo.service.AssignmentEvaluationService;
+import com.example.demo.repository.SensorRepository;
+import com.example.demo.entity.Sensor;
+import com.example.demo.service.SensorService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
-public class AssignmentEvaluationServiceImpl implements AssignmentEvaluationService{
+public class SensorServiceImpl implements SensorService{
 
 @Autowired
 AssignmentEvaluationRepository aer;
