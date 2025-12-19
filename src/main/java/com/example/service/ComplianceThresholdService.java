@@ -1,3 +1,7 @@
 package com.example.demo.service;
 import jakarta.persistence.service;
 import com.example.demo.entity.ComplianceThreshold;
+@Service
+public interface ComplianceThresholdService{
+    public ComplianceThreshold
+}
