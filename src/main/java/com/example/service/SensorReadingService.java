@@ -3,5 +3,7 @@ import jakarta.persistence.service;
 import com.example.demo.entity.SensorReading;
 @service
 public interface SensorReadingService{
-    public SensorReading
+    public SensorReading submitReading(Long sensorld, SensorReading reading);
+    public SensorReading getReading(Long id)(Throw ResourceNotFoundException);
+    public SensorReading get
 }
