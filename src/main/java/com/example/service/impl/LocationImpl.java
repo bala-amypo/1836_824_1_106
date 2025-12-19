@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class LocationServiceImpl implements LocationService{
 
 @Autowired
-LocationRepository aer;
+LocationRepository lr;
 public Location createLocation(Location l){
 
-    return l.save(l);
+    return lr.save(l);
 }
 
 

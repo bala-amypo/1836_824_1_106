@@ -1,19 +1,19 @@
 package com.example.demo.service.impl;
 import com.example.demo.repository.ComplianceEvaluationRepository;
-import com.example.demo.entity.Compliance;
-import com.example.demo.service.AssignmentEvaluationService;
+import com.example.demo.entity.ComplianceEvaluation;
+import com.example.demo.service.ComplianceEvaluationService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
-public class AssignmentEvaluationServiceImpl implements AssignmentEvaluationService{
+public class ComplianceEvaluationServiceImpl implements ComplianceEvaluationService{
 
 @Autowired
-AssignmentEvaluationRepository aer;
-public AssignmentEvaluation createAssignmentEvaluation(AssignmentEvaluation ae){
+ComplianceEvaluationRepository cer;
+public ComplianceEvaluation createComplianceEvaluation(ComplianceEvaluation ce){
 
-    return aer.save(ae);
+    return cer.save(ce);
 }
 
 

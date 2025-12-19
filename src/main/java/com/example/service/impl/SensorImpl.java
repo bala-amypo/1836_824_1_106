@@ -13,7 +13,7 @@ public class SensorServiceImpl implements SensorService{
 SensorRepository sr;
 public Sensor createSensor(Sensor s){
 
-    return aer.save(s);
+    return sr.save(s);
 }
 
 
