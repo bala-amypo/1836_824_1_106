@@ -1,19 +1,19 @@
 package com.example.demo.service.impl;
-import com.example.demo.repository.AssignmentEvaluationRepository;
-import com.example.demo.entity.AssignmentEvaluation;
-import com.example.demo.service.AssignmentEvaluationService;
+import com.example.demo.repository.ComplianceThresholdRepository;
+import com.example.demo.entity.ComplianceThreshold;
+import com.example.demo.service.ComplianceThresholdService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
-public class AssignmentEvaluationServiceImpl implements AssignmentEvaluationService{
+public class ComplianceThresholdServiceImpl implements ComplianceThresholdService{
 
 @Autowired
-AssignmentEvaluationRepository aer;
-public AssignmentEvaluation createAssignmentEvaluation(AssignmentEvaluation ae){
+ComplianceThresholdRepository ctr;
+public ComplianceThreshold createComplianceThreshold(ComplianceThreshold ct){
 
-    return aer.save(ae);
+    return ctr.save(ae);
 }
 
 
