@@ -7,4 +7,5 @@ public interface SensorService{
 
     public Sensor getSensor(Long id)(Throw ResourceNotFoundException);
     public Sensor getAllSensors();
+     
 }
