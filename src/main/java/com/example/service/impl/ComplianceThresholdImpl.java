@@ -13,7 +13,7 @@ public class ComplianceThresholdServiceImpl implements ComplianceThresholdServic
 ComplianceThresholdRepository ctr;
 public ComplianceThreshold createComplianceThreshold(ComplianceThreshold ct){
 
-    return ctr.save(ae);
+    return ctr.save(ct);
 }
 
 
