@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Service
-public class AssignmentEvaluationServiceImpl implements AssignmentEvaluationService{
+public class SensorReadingServiceImpl implements SensorReadingService{
 
 @Autowired
-AssignmentEvaluationRepository aer;
-public AssignmentEvaluation createAssignmentEvaluation(AssignmentEvaluation ae){
+SensorReadingRepository srr;
+public SensorReading createSensorReading(SensorReading sr){
 
-    return aer.save(ae);
+    return srr.save(sr);
 }
 
 
