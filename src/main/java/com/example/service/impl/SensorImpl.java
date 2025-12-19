@@ -10,10 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class SensorServiceImpl implements SensorService{
 
 @Autowired
-AssignmentEvaluationRepository aer;
-public AssignmentEvaluation createAssignmentEvaluation(AssignmentEvaluation ae){
+SensorRepository sr;
+public Sensor createSensor(Sensor s){
 
-    return aer.save(ae);
+    return aer.save(s);
 }
 
 
