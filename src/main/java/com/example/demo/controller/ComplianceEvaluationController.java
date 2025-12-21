@@ -19,14 +19,14 @@ public class ComplianceEvaluationController {
     public ComplianceEvaluationController(ComplianceEvaluationService complianceService) {
         this.complianceService = complianceService;
     }
-
+    
     @Operation(summary = "Evaluate reading and create compliance evaluation log")
     @PostMapping("/evaluate/{readingId}")
     public ResponseEntity<ComplianceEvaluation> evaluateReading(@PathVariable Long readingId) {
         ComplianceEvaluation evaluation = complianceService.evaluateReading(readingId);
         return ResponseEntity.ok(evaluation);
     }
-
+    
     @Operation(summary = "List compliance evaluations for a reading")
     @GetMapping("/reading/{readingId}")
     public ResponseEntity<List<ComplianceEvaluation>> getLogsByReading(@PathVariable Long readingId) {
