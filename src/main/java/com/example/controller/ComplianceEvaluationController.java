@@ -20,10 +20,7 @@ public class ComplianceEvaluationController {
         this.complianceService = complianceService;
     }
 
-    /**
-     * POST /evaluate/{readingId}
-     * Evaluate a sensor reading and create a compliance evaluation log
-     */
+   
     @Operation(summary = "Evaluate reading and create compliance evaluation log")
     @PostMapping("/evaluate/{readingId}")
     public ResponseEntity<ComplianceEvaluation> evaluateReading(
