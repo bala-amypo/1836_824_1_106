@@ -1,20 +1,22 @@
 package com.example.demo.service.impl;
-import com.example.demo.repository.ComplianceThresholdRepository;
+
 import com.example.demo.entity.ComplianceThreshold;
+import com.example.demo.repository.ComplianceThresholdRepository;
 import com.example.demo.service.ComplianceThresholdService;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
 
 @Service
-public class ComplianceThresholdServiceImpl implements ComplianceThresholdService{
+public class ComplianceThresholdServiceImpl implements ComplianceThresholdService {
 
-@Autowired
-ComplianceThresholdRepository ctr;
-public ComplianceThreshold createComplianceThreshold(ComplianceThreshold ct){
+    private final ComplianceThresholdRepository complianceThresholdRepository;
 
-    return ctr.save(ct);
-}
+    
+    public ComplianceThresholdServiceImpl(ComplianceThresholdRepository complianceThresholdRepository) {
+        this.complianceThresholdRepository = complianceThresholdRepository;
+    }
 
-
+    @Override
+    public ComplianceThreshold createComplianceThreshold(ComplianceThreshold complianceThreshold) {
+        return complianceThresholdRepository.save(complianceThreshold);
+    }
 }

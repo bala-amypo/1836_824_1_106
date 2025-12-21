@@ -1,20 +1,22 @@
 package com.example.demo.service.impl;
-import com.example.demo.repository.SensorReadingRepository;
+
 import com.example.demo.entity.SensorReading;
+import com.example.demo.repository.SensorReadingRepository;
 import com.example.demo.service.SensorReadingService;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-
 
 @Service
-public class SensorReadingServiceImpl implements SensorReadingService{
+public class SensorReadingServiceImpl implements SensorReadingService {
 
-@Autowired
-SensorReadingRepository srr;
-public SensorReading createSensorReading(SensorReading sr){
+    private final SensorReadingRepository sensorReadingRepository;
 
-    return srr.save(sr);
-}
+   
+    public SensorReadingServiceImpl(SensorReadingRepository sensorReadingRepository) {
+        this.sensorReadingRepository = sensorReadingRepository;
+    }
 
-
+    @Override
+    public SensorReading createSensorReading(SensorReading sensorReading) {
+        return sensorReadingRepository.save(sensorReading);
+    }
 }
