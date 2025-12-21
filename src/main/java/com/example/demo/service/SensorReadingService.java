@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.SensorReading;
+import com.example.demo.model.SensorReading;
 import java.util.List;
 
 public interface SensorReadingService {

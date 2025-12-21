@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.ComplianceThreshold;
+import com.example.demo.model.ComplianceThreshold;
 import java.util.List;
 
 public interface ComplianceThresholdService {
