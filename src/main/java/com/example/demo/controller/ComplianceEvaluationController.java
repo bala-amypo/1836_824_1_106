@@ -30,10 +30,7 @@ public class ComplianceEvaluationController {
         return ResponseEntity.ok(evaluation);
     }
 
-    /**
-     * GET /reading/{readingId}
-     * List all compliance evaluations for a reading
-     */
+    
     @Operation(summary = "List compliance evaluations for a reading")
     @GetMapping("/reading/{readingId}")
     public ResponseEntity<List<ComplianceEvaluation>> getLogsByReading(
@@ -43,10 +40,7 @@ public class ComplianceEvaluationController {
         return ResponseEntity.ok(evaluations);
     }
 
-    /**
-     * GET /{id}
-     * Get a single compliance evaluation log by id
-     */
+  
     @Operation(summary = "Get compliance evaluation log by id")
     @GetMapping("/{id}")
     public ResponseEntity<ComplianceEvaluation> getLogById(
