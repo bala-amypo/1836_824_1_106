@@ -1,13 +1,13 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.ComplianceEvaluation;
+import com.example.demo.model.ComplianceLog;
 import java.util.List;
 
 public interface ComplianceEvaluationService {
 
-    ComplianceEvaluation evaluateReading(Long readingId);
+    ComplianceLog evaluateReading(Long readingId);
 
-    List<ComplianceEvaluation> getLogsByReading(Long readingId);
+    List<ComplianceLog> getLogsByReading(Long readingId);
 
-    ComplianceEvaluation getLog(Long id);
+    ComplianceLog getLog(Long id);
 }
