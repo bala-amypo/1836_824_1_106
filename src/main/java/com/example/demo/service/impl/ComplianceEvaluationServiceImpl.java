@@ -1,6 +1,6 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.ComplianceEvaluation;
+import com.example.demo.entity.ComplianceLog;
 import com.example.demo.repository.ComplianceEvaluationRepository;
 import com.example.demo.service.ComplianceEvaluationService;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class ComplianceEvaluationServiceImpl implements ComplianceEvaluationServ
     }
 
     @Override
-    public ComplianceEvaluation createComplianceEvaluation(ComplianceEvaluation complianceEvaluation) {
+    public ComplianceLog createComplianceEvaluation(ComplianceLog complianceEvaluation) {
         return complianceEvaluationRepository.save(complianceEvaluation);
     }
 }
