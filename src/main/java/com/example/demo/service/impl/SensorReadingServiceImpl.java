@@ -7,9 +7,9 @@ import com.example.demo.repository.SensorReadingRepository;
 import com.example.demo.repository.SensorRepository;
 import com.example.demo.service.SensorReadingService;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 @Service
 public class SensorReadingServiceImpl implements SensorReadingService {
