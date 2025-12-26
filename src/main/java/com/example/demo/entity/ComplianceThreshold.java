@@ -14,7 +14,7 @@ public class ComplianceThreshold {
     private Double minValue;
     private Double maxValue;
 
-    // REQUIRED by tests
+    // setters
     public void setSensorType(String sensorType) {
         this.sensorType = sensorType;
     }
@@ -23,12 +23,28 @@ public class ComplianceThreshold {
         this.severityLevel = severityLevel;
     }
 
-    // Recommended getters
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
+    }
+
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    // getters
     public String getSensorType() {
         return sensorType;
     }
 
     public String getSeverityLevel() {
         return severityLevel;
+    }
+
+    public Double getMinValue() {
+        return minValue;
+    }
+
+    public Double getMaxValue() {
+        return maxValue;
     }
 }
