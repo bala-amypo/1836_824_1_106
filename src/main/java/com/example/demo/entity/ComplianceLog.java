@@ -10,23 +10,23 @@ public class ComplianceLog {
     private Long id;
 
     @ManyToOne
-    private Sensor sensor;
+    private SensorReading sensorReading;
 
-    private Double value;
+    private String statusAssigned;
 
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
+    public void setSensorReading(SensorReading sensorReading) {
+        this.sensorReading = sensorReading;
     }
 
-    public void setValue(Double value) {
-        this.value = value;
+    public void setStatusAssigned(String statusAssigned) {
+        this.statusAssigned = statusAssigned;
     }
 
-    public Sensor getSensor() {
-        return sensor;
+    public SensorReading getSensorReading() {
+        return sensorReading;
     }
 
-    public Double getValue() {
-        return value;
+    public String getStatusAssigned() {
+        return statusAssigned;
     }
 }

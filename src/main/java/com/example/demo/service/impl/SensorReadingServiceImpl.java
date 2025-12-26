@@ -20,15 +20,15 @@ public class SensorReadingServiceImpl implements SensorReadingService {
     private final SensorRepository sensorRepository;
     private final ComplianceLogRepository complianceLogRepository;
 
-    public SensorReadingServiceImpl(SensorReadingRepository readingRepository,
-                                    SensorRepository sensorRepository,
-                                    ComplianceLogRepository complianceLogRepository) {
+    public SensorReadingServiceImpl(
+            SensorReadingRepository readingRepository,
+            SensorRepository sensorRepository,
+            ComplianceLogRepository complianceLogRepository) {
         this.readingRepository = readingRepository;
         this.sensorRepository = sensorRepository;
         this.complianceLogRepository = complianceLogRepository;
     }
 
-    // ✅ Used when sensorId is provided
     @Override
     public SensorReading submitReading(Long sensorId, SensorReading reading) {
         ValidationUtil.requireReadingValue(reading.getReadingValue());
@@ -39,17 +39,25 @@ public class SensorReadingServiceImpl implements SensorReadingService {
         reading.setSensor(sensor);
         SensorReading saved = readingRepository.save(reading);
 
-        createComplianceLog(saved);
+        ComplianceLog log = new ComplianceLog();
+        log.setSensorReading(saved);
+        log.setStatusAssigned("EVALUATED");
+        complianceLogRepository.save(log);
+
         return saved;
     }
 
-    // ✅ Used by tests that pass only SensorReading
     @Override
     public SensorReading submitReading(SensorReading reading) {
         ValidationUtil.requireReadingValue(reading.getReadingValue());
 
         SensorReading saved = readingRepository.save(reading);
-        createComplianceLog(saved);
+
+        ComplianceLog log = new ComplianceLog();
+        log.setSensorReading(saved);
+        log.setStatusAssigned("EVALUATED");
+        complianceLogRepository.save(log);
+
         return saved;
     }
 
@@ -62,13 +70,5 @@ public class SensorReadingServiceImpl implements SensorReadingService {
     @Override
     public List<SensorReading> getReadingsBySensor(Long sensorId) {
         return readingRepository.findBySensor_Id(sensorId);
-    }
-
-    // ✅ Helper method (keeps code clean)
-    private void createComplianceLog(SensorReading reading) {
-        ComplianceLog log = new ComplianceLog();
-        log.setSensor(reading.getSensor());
-        log.setValue(reading.getReadingValue());
-        complianceLogRepository.save(log);
     }
 }
