@@ -9,6 +9,7 @@ import com.example.demo.repository.SensorReadingRepository;
 import com.example.demo.repository.SensorRepository;
 import com.example.demo.service.SensorReadingService;
 import com.example.demo.util.ValidationUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,18 @@ public class SensorReadingServiceImpl implements SensorReadingService {
     private final SensorRepository sensorRepository;
     private final ComplianceLogRepository complianceLogRepository;
 
+    // ✅ USED BY TESTS
+    public SensorReadingServiceImpl(
+            SensorReadingRepository sensorReadingRepository,
+            SensorRepository sensorRepository) {
+
+        this.sensorReadingRepository = sensorReadingRepository;
+        this.sensorRepository = sensorRepository;
+        this.complianceLogRepository = null;
+    }
+
+    // ✅ USED BY SPRING (IMPORTANT)
+    @Autowired
     public SensorReadingServiceImpl(
             SensorReadingRepository sensorReadingRepository,
             SensorRepository sensorRepository,
@@ -39,15 +52,16 @@ public class SensorReadingServiceImpl implements SensorReadingService {
                 .orElseThrow(() -> new ResourceNotFoundException("sensor not found"));
 
         reading.setSensor(sensor);
-        SensorReading savedReading = sensorReadingRepository.save(reading);
+        SensorReading saved = sensorReadingRepository.save(reading);
 
-        ComplianceLog log = new ComplianceLog();
-        log.setSensorReading(savedReading);
-        log.setStatusAssigned("EVALUATED");
+        if (complianceLogRepository != null) {
+            ComplianceLog log = new ComplianceLog();
+            log.setSensorReading(saved);
+            log.setStatusAssigned("EVALUATED");
+            complianceLogRepository.save(log);
+        }
 
-        complianceLogRepository.save(log);
-
-        return savedReading;
+        return saved;
     }
 
     @Override
@@ -55,15 +69,16 @@ public class SensorReadingServiceImpl implements SensorReadingService {
 
         ValidationUtil.requireReadingValue(reading.getReadingValue());
 
-        SensorReading savedReading = sensorReadingRepository.save(reading);
+        SensorReading saved = sensorReadingRepository.save(reading);
 
-        ComplianceLog log = new ComplianceLog();
-        log.setSensorReading(savedReading);
-        log.setStatusAssigned("EVALUATED");
+        if (complianceLogRepository != null) {
+            ComplianceLog log = new ComplianceLog();
+            log.setSensorReading(saved);
+            log.setStatusAssigned("EVALUATED");
+            complianceLogRepository.save(log);
+        }
 
-        complianceLogRepository.save(log);
-
-        return savedReading;
+        return saved;
     }
 
     @Override
