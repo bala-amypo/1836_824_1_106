@@ -1,36 +1,51 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "compliance_threshold")
 public class ComplianceThreshold {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String sensorType;
-
     private Double minValue;
-
     private Double maxValue;
+    private String parameter;
 
-    private String severityLevel;
+   
+    public Long getId() {
+        return id;
+    }
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    public Double getMinValue() {
+        return minValue;
+    }
 
-    public Long getId() { return id; }
+    public Double getMaxValue() {
+        return maxValue;
+    }
 
-    public String getSensorType() { return sensorType; }
-    public void setSensorType(String sensorType) { this.sensorType = sensorType; }
+    public String getParameter() {
+        return parameter;
+    }
 
-    public Double getMinValue() { return minValue; }
-    public void setMinValue(Double minValue) { this.minValue = minValue; }
+ 
+   
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public Double getMaxValue() { return maxValue; }
-    public void setMaxValue(Double maxValue) { this.maxValue = maxValue; }
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
+    }
 
-    public String getSeverityLevel() { return severityLevel; }
-    public void setSeverityLevel(String severityLevel) { this.severityLevel = severityLevel; }
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public void setParameter(String parameter) {
+        this.parameter = parameter;
+    }
 }
