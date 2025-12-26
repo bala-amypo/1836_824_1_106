@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-
 @Entity
 public class ComplianceThreshold {
 
@@ -14,7 +13,6 @@ public class ComplianceThreshold {
     private Double minValue;
     private Double maxValue;
 
-    // ✅ REQUIRED setters used in tests
     public void setSensorType(String sensorType) {
         this.sensorType = sensorType;
     }
@@ -23,12 +21,27 @@ public class ComplianceThreshold {
         this.severityLevel = severityLevel;
     }
 
-    // (Optional but recommended)
+    public void setMinValue(Double minValue) {
+        this.minValue = minValue;
+    }
+
+    public void setMaxValue(Double maxValue) {
+        this.maxValue = maxValue;
+    }
+
     public String getSensorType() {
         return sensorType;
     }
 
     public String getSeverityLevel() {
         return severityLevel;
+    }
+
+    public Double getMinValue() {
+        return minValue;
+    }
+
+    public Double getMaxValue() {
+        return maxValue;
     }
 }
