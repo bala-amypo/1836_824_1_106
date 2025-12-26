@@ -3,55 +3,32 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "compliance_threshold")
 public class ComplianceThreshold {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String sensorType;
+    private String severityLevel;
     private Double minValue;
     private Double maxValue;
-    private String parameter;
-    private String sensorType;
 
-
-   
-    public Long getId() {
-        return id;
+    // ✅ REQUIRED setters used in tests
+    public void setSensorType(String sensorType) {
+        this.sensorType = sensorType;
     }
+
+    public void setSeverityLevel(String severityLevel) {
+        this.severityLevel = severityLevel;
+    }
+
+    // (Optional but recommended)
     public String getSensorType() {
-    return sensorType;
-}
-
-
-    public Double getMinValue() {
-        return minValue;
+        return sensorType;
     }
 
-    public Double getMaxValue() {
-        return maxValue;
-    }
-
-    public String getParameter() {
-        return parameter;
-    }
-
- 
-   
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setMinValue(Double minValue) {
-        this.minValue = minValue;
-    }
-
-    public void setMaxValue(Double maxValue) {
-        this.maxValue = maxValue;
-    }
-
-    public void setParameter(String parameter) {
-        this.parameter = parameter;
+    public String getSeverityLevel() {
+        return severityLevel;
     }
 }
