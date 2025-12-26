@@ -44,4 +44,16 @@ public class SensorReadingServiceImpl implements SensorReadingService {
     public List<SensorReading> getReadingsBySensor(Long sensorId) {
         return readingRepository.findBySensor_Id(sensorId);
     }
+    @Override
+public SensorReading submitReading(SensorReading reading) {
+    SensorReading saved = sensorReadingRepository.save(reading);
+
+    ComplianceLog log = new ComplianceLog();
+    log.setSensor(saved.getSensor());
+    log.setValue(saved.getValue());
+    complianceLogRepository.save(log);
+
+    return saved;
+}
+
 }
