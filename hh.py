@@ -1,10 +1,13 @@
+
 #!/usr/bin/env python3
 
 import os
 import shutil
 import time
 
-BASE_DIR = os.path.dirname(os.path.abspath(_file_))
+# Get the directory where this script (hh.py) is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 SOURCE_DIR = os.path.join(BASE_DIR, "src", "test")
 DEST_DIR = "/home/coder/Workspace/test_saved"
 
@@ -14,7 +17,7 @@ while True:
             shutil.copytree(
                 SOURCE_DIR,
                 DEST_DIR,
-                dirs_exist_ok=True
+                dirs_exist_ok=True  # Python 3.8+
             )
             print("Folder Captured!")
         except Exception as e:
