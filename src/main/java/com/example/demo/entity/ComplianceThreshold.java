@@ -13,11 +13,17 @@ public class ComplianceThreshold {
     private Double minValue;
     private Double maxValue;
     private String parameter;
+    private String sensorType;
+
 
    
     public Long getId() {
         return id;
     }
+    public String getSensorType() {
+    return sensorType;
+}
+
 
     public Double getMinValue() {
         return minValue;
