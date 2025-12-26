@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Sensor;
+import com.example.demo.entity.Sensor;
 import com.example.demo.service.SensorService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/sensors")
+@RequestMapping("/sensors")
 public class SensorController {
 
     private final SensorService sensorService;

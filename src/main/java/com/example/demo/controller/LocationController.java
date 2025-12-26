@@ -1,13 +1,13 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Location;
+import com.example.demo.entity.Location;
 import com.example.demo.service.LocationService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/locations")
+@RequestMapping("/locations")
 public class LocationController {
 
     private final LocationService locationService;
