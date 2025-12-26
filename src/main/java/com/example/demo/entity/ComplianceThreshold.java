@@ -14,6 +14,15 @@ public class ComplianceThreshold {
     private Double minValue;
     private Double maxValue;
 
+    // id
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     // setters
     public void setSensorType(String sensorType) {
         this.sensorType = sensorType;
