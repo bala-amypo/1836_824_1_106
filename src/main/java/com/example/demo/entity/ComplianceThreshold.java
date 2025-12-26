@@ -1,6 +1,7 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class ComplianceThreshold {
@@ -10,19 +11,26 @@ public class ComplianceThreshold {
     private Long id;
 
     private String sensorType;
-    private Double minValue;
-    private Double maxValue;
-    private String unit;
 
-    public ComplianceThreshold() {}
+    private Double minValue;
+
+    private Double maxValue;
+
+    private String severityLevel;
+
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     public Long getId() { return id; }
+
     public String getSensorType() { return sensorType; }
     public void setSensorType(String sensorType) { this.sensorType = sensorType; }
+
     public Double getMinValue() { return minValue; }
     public void setMinValue(Double minValue) { this.minValue = minValue; }
+
     public Double getMaxValue() { return maxValue; }
     public void setMaxValue(Double maxValue) { this.maxValue = maxValue; }
-    public String getUnit() { return unit; }
-    public void setUnit(String unit) { this.unit = unit; }
+
+    public String getSeverityLevel() { return severityLevel; }
+    public void setSeverityLevel(String severityLevel) { this.severityLevel = severityLevel; }
 }

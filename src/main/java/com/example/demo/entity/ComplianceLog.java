@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -10,22 +10,24 @@ public class ComplianceLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Boolean compliant;
-    private String message;
-    private LocalDateTime evaluatedAt;
-
     @ManyToOne
     private SensorReading sensorReading;
 
-    public ComplianceLog() {}
+    @ManyToOne
+    private ComplianceThreshold thresholdUsed;
+
+    private String statusAssigned;
+
+    private String remarks;
+
+    private LocalDateTime loggedAt = LocalDateTime.now();
 
     public Long getId() { return id; }
-    public Boolean getCompliant() { return compliant; }
-    public void setCompliant(Boolean compliant) { this.compliant = compliant; }
-    public String getMessage() { return message; }
-    public void setMessage(String message) { this.message = message; }
-    public LocalDateTime getEvaluatedAt() { return evaluatedAt; }
-    public void setEvaluatedAt(LocalDateTime evaluatedAt) { this.evaluatedAt = evaluatedAt; }
+    public void setId(Long id) { this.id = id; }
+
     public SensorReading getSensorReading() { return sensorReading; }
     public void setSensorReading(SensorReading sensorReading) { this.sensorReading = sensorReading; }
+
+    public String getStatusAssigned() { return statusAssigned; }
+    public void setStatusAssigned(String statusAssigned) { this.statusAssigned = statusAssigned; }
 }
