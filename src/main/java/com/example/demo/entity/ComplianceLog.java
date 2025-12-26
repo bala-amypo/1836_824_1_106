@@ -1,7 +1,6 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 public class ComplianceLog {
@@ -11,23 +10,23 @@ public class ComplianceLog {
     private Long id;
 
     @ManyToOne
-    private SensorReading sensorReading;
+    private Sensor sensor;
 
-    @ManyToOne
-    private ComplianceThreshold thresholdUsed;
+    private Double value;
 
-    private String statusAssigned;
+    public void setSensor(Sensor sensor) {
+        this.sensor = sensor;
+    }
 
-    private String remarks;
+    public void setValue(Double value) {
+        this.value = value;
+    }
 
-    private LocalDateTime loggedAt = LocalDateTime.now();
+    public Sensor getSensor() {
+        return sensor;
+    }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public SensorReading getSensorReading() { return sensorReading; }
-    public void setSensorReading(SensorReading sensorReading) { this.sensorReading = sensorReading; }
-
-    public String getStatusAssigned() { return statusAssigned; }
-    public void setStatusAssigned(String statusAssigned) { this.statusAssigned = statusAssigned; }
+    public Double getValue() {
+        return value;
+    }
 }
