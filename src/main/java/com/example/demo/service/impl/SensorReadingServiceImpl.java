@@ -1,8 +1,10 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.entity.ComplianceLog;
 import com.example.demo.entity.Sensor;
 import com.example.demo.entity.SensorReading;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.repository.ComplianceLogRepository;
 import com.example.demo.repository.SensorReadingRepository;
 import com.example.demo.repository.SensorRepository;
 import com.example.demo.service.SensorReadingService;
@@ -16,13 +18,17 @@ public class SensorReadingServiceImpl implements SensorReadingService {
 
     private final SensorReadingRepository readingRepository;
     private final SensorRepository sensorRepository;
+    private final ComplianceLogRepository complianceLogRepository;
 
     public SensorReadingServiceImpl(SensorReadingRepository readingRepository,
-                                    SensorRepository sensorRepository) {
+                                    SensorRepository sensorRepository,
+                                    ComplianceLogRepository complianceLogRepository) {
         this.readingRepository = readingRepository;
         this.sensorRepository = sensorRepository;
+        this.complianceLogRepository = complianceLogRepository;
     }
 
+    // ✅ Used when sensorId is provided
     @Override
     public SensorReading submitReading(Long sensorId, SensorReading reading) {
         ValidationUtil.requireReadingValue(reading.getReadingValue());
@@ -31,7 +37,20 @@ public class SensorReadingServiceImpl implements SensorReadingService {
                 .orElseThrow(() -> new ResourceNotFoundException("sensor not found"));
 
         reading.setSensor(sensor);
-        return readingRepository.save(reading);
+        SensorReading saved = readingRepository.save(reading);
+
+        createComplianceLog(saved);
+        return saved;
+    }
+
+    // ✅ Used by tests that pass only SensorReading
+    @Override
+    public SensorReading submitReading(SensorReading reading) {
+        ValidationUtil.requireReadingValue(reading.getReadingValue());
+
+        SensorReading saved = readingRepository.save(reading);
+        createComplianceLog(saved);
+        return saved;
     }
 
     @Override
@@ -44,16 +63,12 @@ public class SensorReadingServiceImpl implements SensorReadingService {
     public List<SensorReading> getReadingsBySensor(Long sensorId) {
         return readingRepository.findBySensor_Id(sensorId);
     }
-    @Override
-public SensorReading submitReading(SensorReading reading) {
-    SensorReading saved = sensorReadingRepository.save(reading);
 
-    ComplianceLog log = new ComplianceLog();
-    log.setSensor(saved.getSensor());
-    log.setValue(saved.getValue());
-    complianceLogRepository.save(log);
-
-    return saved;
-}
-
+    // ✅ Helper method (keeps code clean)
+    private void createComplianceLog(SensorReading reading) {
+        ComplianceLog log = new ComplianceLog();
+        log.setSensor(reading.getSensor());
+        log.setValue(reading.getReadingValue());
+        complianceLogRepository.save(log);
+    }
 }
