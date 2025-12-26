@@ -8,23 +8,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public User register(User user) {
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new IllegalArgumentException("Email already exists");
+        }
         return userRepository.save(user);
     }
-
-    @Override
-public User register(User user) {
-    if (userRepository.existsByEmail(user.getEmail())) {
-        throw new IllegalArgumentException("Email already exists");
-    }
-    return userRepository.save(user);
 }
 
-}
+
+
