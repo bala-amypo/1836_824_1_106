@@ -2,7 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.config.JwtProvider;
 import com.example.demo.dto.AuthResponse;
-import com.example.demo.dto.LoginRequest;
+import com.example.demo.dto.AuthRequest;
 import com.example.demo.dto.RegisterRequest;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
@@ -70,7 +70,7 @@ public class AuthController {
     }
     
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest request) {
+    public ResponseEntity<?> login(@Valid @RequestBody AuthRequest request) {
         try {
             // Find user by email
             Optional<User> userOptional = userService.findByEmail(request.getEmail());
