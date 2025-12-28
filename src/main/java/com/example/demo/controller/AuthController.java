@@ -20,14 +20,43 @@ public class AuthController {
         this.userService = userService;
         this.jwtTokenProvider = jwtTokenProvider;
     }
-
-    @PostMapping("/register")
-    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
-        User user = new User(request.getEmail(), request.getPassword(), Role.USER);
-        User created = userService.register(user);
-        String token = jwtTokenProvider.generateToken(created.getId(), created.getEmail(), created.getRole());
-        return ResponseEntity.ok(new AuthResponse(token));
+ @PostMapping("/register")
+    public ResponseEntity<?> register(@Valid @RequestBody AuthRequest request) {
+        try {
+            // Check if user already exists
+            if (userService.findByEmail(request.getEmail()).isPresent()) {
+                return ResponseEntity
+                    .badRequest()
+                    .body(Map.of("error", "Email already registered"));
+            }
+            
+            // Create new user with USER role by default
+            User user = new User(
+                request.getEmail(),
+                request.getPassword(),
+                Role.USER
+            );
+            
+            // Register user
+            User createdUser = userService.register(user);
+            
+            // Generate JWT token
+            String token = jwtProvider.generateToken(
+                createdUser.getId(),
+                createdUser.getEmail(),
+                createdUser.getRole()
+            );
+            
+            // Return response
+            return ResponseEntity.ok(new AuthResponse(token));
+            
+        } catch (Exception e) {
+            return ResponseEntity
+                .badRequest()
+                .body(Map.of("error", e.getMessage()));
+        }
     }
+    
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
