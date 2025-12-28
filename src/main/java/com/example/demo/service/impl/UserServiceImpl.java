@@ -1,29 +1,36 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
-import com.example.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
-public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
+public class UserService {
     
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
     
-    @Override
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    
     public User register(User user) {
-        if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new IllegalArgumentException("Email already exists");
+        // Check if email already exists
+        if (userRepository.existsByEmail(user.getEmail())) {
+            throw new RuntimeException("Email already registered");
         }
+        
+        // Encode password
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        
+        // Save user
         return userRepository.save(user);
     }
     
-    @Override
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
