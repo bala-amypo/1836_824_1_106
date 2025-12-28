@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.config.JwtProvider;
+import com.example.demo.config.JwtTokenProvider;
 import com.example.demo.dto.AuthResponse;
 import com.example.demo.dto.AuthRequest;
 import com.example.demo.dto.RegisterRequest;
@@ -26,7 +26,7 @@ public class AuthController {
     private UserService userService;
     
     @Autowired
-    private JwtProvider jwtProvider;
+    private JwtTokenProvider jwtTokenProvider;  // Changed from jwtProvider to jwtTokenProvider
     
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -43,17 +43,16 @@ public class AuthController {
             }
             
             // Create new user with USER role by default
-            User user = new User(
-                request.getEmail(),
-                request.getPassword(),
-                Role.USER
-            );
+            User user = new User();
+            user.setEmail(request.getEmail());
+            user.setPassword(request.getPassword());
+            user.setRole(Role.USER);
             
             // Register user
             User createdUser = userService.register(user);
             
             // Generate JWT token
-            String token = jwtProvider.generateToken(
+            String token = jwtTokenProvider.generateToken(
                 createdUser.getId(),
                 createdUser.getEmail(),
                 createdUser.getRole()
@@ -90,7 +89,7 @@ public class AuthController {
             }
             
             // Generate JWT token
-            String token = jwtProvider.generateToken(
+            String token = jwtTokenProvider.generateToken(
                 user.getId(),
                 user.getEmail(),
                 user.getRole()
