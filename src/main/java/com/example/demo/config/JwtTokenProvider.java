@@ -18,9 +18,16 @@ public class JwtTokenProvider {
         this.validityInMilliseconds = validityInMilliseconds;
     }
     
-    public String generateToken(Long userId, String email, Role role) {
-        return "mock-jwt-token-" + userId + "-" + email + "-" + role;
-    }
+   public String generateToken(Long userId, String email, Role role) {
+    return Jwts.builder()
+            .setSubject(email)
+            .claim("userId", userId)
+            .claim("roles", java.util.Set.of(role.name()))
+            .setIssuedAt(new Date())
+            .setExpiration(new Date(System.currentTimeMillis() + expiration))
+            .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+            .compact();
+}
     
     public boolean validateToken(String token) {
         return token != null && token.startsWith("mock-jwt-token");
