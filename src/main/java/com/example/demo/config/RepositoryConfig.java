@@ -123,23 +123,23 @@ public class RepositoryConfig {
         };
     }
 
-    @Bean
-    @Primary
-    public UserRepository userRepository() {
-        return new UserRepository() {
-            private final Map<Long, User> data = new ConcurrentHashMap<>();
-            private final AtomicLong idGen = new AtomicLong(1);
+    // @Bean
+    // @Primary
+    // public UserRepository userRepository() {
+    //     return new UserRepository() {
+    //         private final Map<Long, User> data = new ConcurrentHashMap<>();
+    //         private final AtomicLong idGen = new AtomicLong(1);
 
-            public User save(User user) {
-                if (user.getId() == null) user.setId(idGen.getAndIncrement());
-                data.put(user.getId(), user);
-                return user;
-            }
-            public Optional<User> findById(Long id) { return Optional.ofNullable(data.get(id)); }
-            public List<User> findAll() { return new ArrayList<>(data.values()); }
-            public Optional<User> findByEmail(String email) {
-                return data.values().stream().filter(u -> Objects.equals(u.getEmail(), email)).findFirst();
-            }
-        };
-    }
+    //         public User save(User user) {
+    //             if (user.getId() == null) user.setId(idGen.getAndIncrement());
+    //             data.put(user.getId(), user);
+    //             return user;
+    //         }
+    //         public Optional<User> findById(Long id) { return Optional.ofNullable(data.get(id)); }
+    //         public List<User> findAll() { return new ArrayList<>(data.values()); }
+    //         public Optional<User> findByEmail(String email) {
+    //             return data.values().stream().filter(u -> Objects.equals(u.getEmail(), email)).findFirst();
+    //         }
+    //     };
+    // }
 }
